@@ -4,7 +4,6 @@ package template;
 public abstract class AbstractSort {
     /* the method sort algorithms perform */
     public static void sort(Comparable[] a) {
-
     };
 
     /* Check w is less than v, for each comparable elements */
@@ -21,15 +20,15 @@ public abstract class AbstractSort {
 
     /* Show all elements in a single array */
     protected static void show(Comparable[] a) {
-        for(int i=0; i<a.length; i++)
+        for (int i = 0; i < a.length; i++)
             System.out.print(a[i] + " ");
         System.out.println();
     }
 
     /* Check the array has sorted correctly */
     protected static boolean isSorted(Comparable[] a) {
-        for(int i=1; i<a.length; i++)
-            if(less(a[i], a[i-1]))
+        for (int i = 1; i < a.length; i++)
+            if (less(a[i], a[i - 1]))
                 return false;
 
         return true;
