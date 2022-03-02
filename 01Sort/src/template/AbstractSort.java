@@ -19,7 +19,7 @@ public abstract class AbstractSort {
     }
 
     /* Show all elements in a single array */
-    protected static void show(Comparable[] a) {
+    public static void show(Comparable[] a) {
         for (int i = 0; i < a.length; i++)
             System.out.print(a[i] + " ");
         System.out.println();
