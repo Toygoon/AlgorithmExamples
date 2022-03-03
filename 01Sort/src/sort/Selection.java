@@ -8,7 +8,7 @@ public class Selection extends AbstractSort {
         int n = a.length, min;
 
         for (int i = 0; i < n - 1; i++) {
-            // Find minimum value
+            // Find the minimum value
             min = i;
 
             for (int j = i + 1; j < n; j++)
