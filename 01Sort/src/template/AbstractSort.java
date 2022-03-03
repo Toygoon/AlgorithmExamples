@@ -6,6 +6,10 @@ public abstract class AbstractSort {
     public static void sort(Comparable[] a) {
     };
 
+    /* the method sort algorithms used for linear sort algorithms */
+    public static void sort(Object[] a) {
+    };
+
     /* Check w is less than v, for each comparable elements */
     protected static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
