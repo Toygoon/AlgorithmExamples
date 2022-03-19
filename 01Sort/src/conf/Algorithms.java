@@ -6,5 +6,6 @@ public enum Algorithms {
     Selection,
     Insertion,
     Counting,
-    Shell
+    Shell,
+    Radix,
 }
