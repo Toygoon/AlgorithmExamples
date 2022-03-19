@@ -4,6 +4,8 @@ import template.AbstractSort;
 
 /* Counting Sort (The type of linear sorting algorithms) */
 public class Counting extends AbstractSort {
+    public static final boolean isLinear = true;
+
     public static int[] sort(int[] a, int k) {
         int n = a.length;
         int[] c = new int[k], b = new int[n];

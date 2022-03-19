@@ -4,6 +4,8 @@ import template.AbstractSort;
 
 /* Selection Sort */
 public class Selection extends AbstractSort {
+    public static final boolean isLinear = false;
+
     public static void sort(Comparable[] a) {
         int n = a.length, min;
 

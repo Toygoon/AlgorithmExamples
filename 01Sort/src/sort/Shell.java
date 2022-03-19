@@ -4,6 +4,8 @@ import template.AbstractSort;
 
 /* Shell Sort */
 public class Shell extends AbstractSort {
+    public static final boolean isLinear = false;
+
     public static void sort(Comparable[] a) {
         int n = a.length, h = 1;
 

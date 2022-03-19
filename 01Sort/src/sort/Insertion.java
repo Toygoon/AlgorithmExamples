@@ -4,6 +4,8 @@ import template.AbstractSort;
 
 /* Insertion Sort */
 public class Insertion extends AbstractSort {
+    public static final boolean isLinear = false;
+
     public static void sort(Comparable[] a) {
         int n = a.length;
 
