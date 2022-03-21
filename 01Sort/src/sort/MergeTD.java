@@ -2,6 +2,7 @@ package sort;
 
 import template.AbstractSort;
 
+/* Top Down Merge Sort */
 public class MergeTD extends AbstractSort {
     private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
         // Assume that a[lo ... mid] and a[mid + 1 ... hi ] is already sorted
