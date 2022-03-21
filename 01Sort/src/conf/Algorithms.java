@@ -8,4 +8,6 @@ public enum Algorithms {
     Counting,
     Shell,
     Radix,
+    MergeTD,
+    MergeBU,
 }
