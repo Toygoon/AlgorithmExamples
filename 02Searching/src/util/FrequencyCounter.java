@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class FrequencyCounter {
+    private static final String RES_DIR = System.getProperty("user.dir") + System.getProperty("file.separator") + "res";
     private static final int DEFAULT_MIN_LENGTH = 8;
     private static int minLength;
 
@@ -26,7 +27,7 @@ public class FrequencyCounter {
     public static void count() {
         SequentialSearchST<String, Integer> st = new SequentialSearchST<>();
         File file = null;
-        JFileChooser jFileChooser = new JFileChooser();
+        JFileChooser jFileChooser = new JFileChooser(RES_DIR);
         String word, maxKey = "";
         int maxValue = 0;
         long start, end;
