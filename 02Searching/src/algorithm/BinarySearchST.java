@@ -156,8 +156,8 @@ public class BinarySearchST<K extends Comparable<K>, V> {
 
         // Start with first index, beside to putting sequences
         for (int j = i; j < N - 1; j++) {
-            keys[j] = keys[j - 1];
-            vals[j] = vals[j - 1];
+            keys[j] = keys[j + 1];
+            vals[j] = vals[j + 1];
         }
 
         N--;
