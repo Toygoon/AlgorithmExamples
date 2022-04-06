@@ -1,10 +1,6 @@
 package algorithm;
 
-import template.Node;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import util.Queue;
 
 /* BinarySearchST */
 public class BinarySearchST<K extends Comparable<K>, V> {
@@ -41,8 +37,6 @@ public class BinarySearchST<K extends Comparable<K>, V> {
         return size() == 0;
     }
 
-    ;
-
     /* size() : Returns the number of key-value pairs in the LinkedList */
     public int size() {
         return N;
@@ -55,16 +49,10 @@ public class BinarySearchST<K extends Comparable<K>, V> {
         V[] tempv = (V[]) new Object[capacity];
 
         // Copy elements to new array
-        // Why don't this use System.arraycopy?
-        /*
         for (int i = 0; i < N; i++) {
             tempk[i] = keys[i];
             tempv[i] = vals[i];
         }
-        */
-
-        System.arraycopy(keys, 0, tempk, N - 1, N);
-        System.arraycopy(vals, 0, tempv, N - 1, N);
 
         // Change the pointer of current array, previous array will be garbage-collected
         vals = tempv;
@@ -78,7 +66,7 @@ public class BinarySearchST<K extends Comparable<K>, V> {
         int lo = 0, hi = N - 1, mid, cmp;
 
         while (lo <= hi) {
-            mid = (hi + lo) / 2;
+            mid = lo + (hi - lo) / 2;
             cmp = key.compareTo(keys[mid]);
 
             // Key is higher than mid
@@ -108,14 +96,19 @@ public class BinarySearchST<K extends Comparable<K>, V> {
         // Searching hit
         if (i < N && keys[i].compareTo(key) == 0)
             return vals[i];
-            // Searching miss, key not exists
-        else
-            return null;
+
+        // Searching miss, key not exists
+        return null;
     }
 
     /* put() : Inserts the specified key-value pair into the symbol table, overwriting the old
         value with the new value if the symbol table already contains the specified key */
     public void put(K key, V value) {
+        if (value == null) {
+            delete(key);
+            return;
+        }
+
         // Find out the key first
         int i = search(key);
 
@@ -170,19 +163,33 @@ public class BinarySearchST<K extends Comparable<K>, V> {
             resize(keys.length / 2);
     }
 
-    /* keys() : Return all the keys for Iterable type, such as ArrayList */
+    /* min() : Returns the smallest key in this symbol table */
+    public K min() {
+        return keys[0];
+    }
+
+    /* max() : Returns the largest key in this symbol table */
+    public K max() {
+        return keys[N - 1];
+    }
+
+    /* keys() : Return all the keys for Iterable type, such as ArrayList,
+     * This method uses queue, because existing methods occurs an error */
     public Iterable<K> keys() {
-        // Make a new Iterable
-        List<K> keyList = new ArrayList<>(N);
+        return keys(min(), max());
+    }
 
-        // Adding sequences, why don't this use Collections?
-        /*
-        for (int i = 0; i < N; i++)
-            keyList.add(keys[i]);
-        */
-        keyList.addAll(Arrays.asList(keys));
+    public Iterable<K> keys(K lo, K hi) {
+        Queue<K> queue = new Queue<>();
 
-        return keyList;
+        if (lo.compareTo(hi) > 0)
+            return queue;
+        for (int i = search(hi); i < search(hi); i++)
+            queue.enqueue(keys[i]);
+        if (contains(hi))
+            queue.enqueue(keys[search(hi)]);
+
+        return queue;
     }
 
 }
