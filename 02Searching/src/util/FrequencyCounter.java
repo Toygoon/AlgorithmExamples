@@ -1,5 +1,6 @@
 package util;
 
+import algorithm.BinarySearchST;
 import algorithm.SequentialSearchST;
 
 import javax.swing.*;
@@ -25,7 +26,7 @@ public class FrequencyCounter {
     }
 
     public static void count() {
-        SequentialSearchST<String, Integer> st = new SequentialSearchST<>();
+        BinarySearchST<String, Integer> st = new BinarySearchST<>();
         File file = null;
         JFileChooser jFileChooser = new JFileChooser(RES_DIR);
         String word, maxKey = "";
