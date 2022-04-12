@@ -6,6 +6,7 @@
 
 package util;
 
+import algorithm.AVLTreeST;
 import algorithm.BST;
 import algorithm.BinarySearchST;
 import algorithm.SequentialSearchST;
@@ -33,7 +34,7 @@ public class FrequencyCounter {
     }
 
     public static void count() {
-        BST<String, Integer> st = new BST<>();
+        AVLTreeST<String, Integer> st = new AVLTreeST<>();
         File file = null;
         JFileChooser jFileChooser = new JFileChooser(RES_DIR);
         String word, maxKey = "";
