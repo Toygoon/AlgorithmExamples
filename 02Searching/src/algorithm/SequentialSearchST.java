@@ -1,3 +1,9 @@
+/* Sequential Search Symbol Table
+ *
+ * @author Lim Jung Min,
+ * Department of Computer Engineering, Yeungnam University.
+ */
+
 package algorithm;
 
 import template.Node;
@@ -5,7 +11,6 @@ import template.Node;
 import java.util.ArrayList;
 import java.util.List;
 
-/* SequentialSearchST : Represents an unordered LinkedList of generic key-value pairs */
 public class SequentialSearchST<K, V> {
     // Keep the reference of first node, initial value : null
     private Node<K, V> first;

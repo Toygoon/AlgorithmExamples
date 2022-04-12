@@ -1,9 +1,14 @@
+/* Binary Search Tree
+ *
+ * @author Lim Jung Min,
+ * Department of Computer Engineering, Yeungnam University.
+ */
+
 package algorithm;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/* Binary Search Tree */
 public class BST<K extends Comparable<K>, V> {
     // Root of BST
     private Node<K, V> root;

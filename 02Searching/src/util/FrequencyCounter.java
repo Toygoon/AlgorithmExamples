@@ -1,3 +1,9 @@
+/* Testing for Search Structures From User Files
+ *
+ * @author Lim Jung Min,
+ * Department of Computer Engineering, Yeungnam University.
+ */
+
 package util;
 
 import algorithm.BST;

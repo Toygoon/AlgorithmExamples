@@ -1,3 +1,10 @@
+/* Searching Algorithms
+ *
+ * @author Lim Jung Min,
+ * Department of Computer Engineering, Yeungnam University.
+ */
+
+
 import util.FrequencyCounter;
 
 public class SearchingMain {

@@ -1,3 +1,9 @@
+/* Node Structure used for such as Sequential Search ST, or Binary Search ST
+ *
+ * @author Lim Jung Min,
+ * Department of Computer Engineering, Yeungnam University.
+ */
+
 package template;
 
 /**

@@ -1,8 +1,13 @@
+/* Binary Search Symbol Table
+ *
+ * @author Lim Jung Min,
+ * Department of Computer Engineering, Yeungnam University.
+ */
+
 package algorithm;
 
 import util.Queue;
 
-/* BinarySearchST */
 public class BinarySearchST<K extends Comparable<K>, V> {
     // Set first array capacity before increasing or decreasing the size of array
     private static final int INIT_CAPACITY = 10;

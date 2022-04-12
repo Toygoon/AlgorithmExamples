@@ -1,8 +1,13 @@
+/* Queue class; represents a first-in-first-out (FIFO) queue of generic keys
+ *
+ * @author Lim Jung Min,
+ * Department of Computer Engineering, Yeungnam University.
+ */
+
 package util;
 
 import java.util.Iterator;
 
-/* The Queue class represents a first-in-first-out (FIFO) queue of generic keys */
 public class Queue<K> implements Iterable<K> {
     /* Beginning, and end of queue */
     private Node<K> first, last;
