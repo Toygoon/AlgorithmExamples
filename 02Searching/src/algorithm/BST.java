@@ -13,6 +13,7 @@ public class BST<K extends Comparable<K>, V> {
     // Root of BST
     private Node<K, V> root;
 
+    /* Node Class */
     public static class Node<K, V> {
         // Key-Value pairs of this node
         K key;
