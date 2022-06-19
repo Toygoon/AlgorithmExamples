@@ -1,5 +1,10 @@
 package com.toygoon.sort;
 
+import com.toygoon.sort.algs.LSD;
+import com.toygoon.sort.algs.MSD;
+import com.toygoon.sort.algs.ThreeWayQuick;
+import com.toygoon.utils.Print;
+
 public class SortMain {
     public static void main(String[] args) {
         //String[] a = "no is th ti fo co ai of th pa".split(" ");

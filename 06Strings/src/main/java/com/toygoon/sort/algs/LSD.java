@@ -1,4 +1,6 @@
-package com.toygoon.sort;
+package com.toygoon.sort.algs;
+
+import com.toygoon.utils.Print;
 
 public class LSD {
     public static void sort(String[] a, int W) {

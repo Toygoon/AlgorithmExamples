@@ -1,4 +1,6 @@
-package com.toygoon.sort;
+package com.toygoon.sort.algs;
+
+import com.toygoon.utils.Print;
 
 public class ThreeWayQuick {
     private static final int CUTOFF = 0;   // cutoff to insertion sort
