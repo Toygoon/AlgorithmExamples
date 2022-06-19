@@ -43,7 +43,7 @@ public class ThreeWayQuick {
             else              i++;
         }
 
-        Print.printArray(a, String.valueOf(d));
+        Print.printArray(a, "ThreeWay " + d);
         // a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi].
         sort(a, lo, lt-1, d);
         if (v >= 0) sort(a, lt, gt, d+1);
