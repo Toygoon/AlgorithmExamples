@@ -1,10 +1,11 @@
-package com.toygoon;
+package com.toygoon.sort;
 
 public class MSD {
     // cutoff
-    public static final int M = 2;
+    public static final int M = 0;
     // extended ASCII alphabet size
     private static final int R = 256;
+    public static int times = 0;
 
     public static void sort(String[] a) {
         int n = a.length;
@@ -32,10 +33,12 @@ public class MSD {
         for (int i = lo; i <= hi; i++)
             a[i] = aux[i - lo];
 
-        Print.printArray(a, "MSD " + d);
+        times++;
+
+        Print.printArray(a, "MSD before recursion " + times);
         for (int r = 0; r < R; r++)
             sort(a, lo + count[r], lo + count[r + 1] - 1, d + 1, aux);
-        Print.printArray(a, "MSD " + d);
+        Print.printArray(a, "MSD after recursion " + times);
     }
 
     private static void insertionSort(String[] a, int lo, int hi, int d) {

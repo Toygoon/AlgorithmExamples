@@ -1,4 +1,4 @@
-package com.toygoon;
+package com.toygoon.sort;
 
 public class Print {
     public static void printArray(String[] a, String msg) {
