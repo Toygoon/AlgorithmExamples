@@ -1,6 +1,8 @@
 package com.toygoon.utils;
 
+import com.toygoon.regex.algs.NFA;
 import com.toygoon.search.algs.KMP;
+import com.toygoon.search.algs.RK;
 
 import java.util.Arrays;
 
@@ -87,4 +89,25 @@ public class Print {
 
         System.out.println();
     }
+
+    public static void printHash(RK rk) {
+        System.out.printf("%-5s%-5s", "hash", "i");
+
+        for (int i = 0; i < RK.txt.length(); i++)
+            System.out.printf("%-2d ", i);
+
+        System.out.printf("\n%-10s", "");
+        for (int i = 0; i < RK.txt.length(); i++)
+            System.out.printf("%-2c ", RK.txt.charAt(i));
+
+        System.out.println();
+        for (int i = 0; i < RK.hashList.size(); i++) {
+            System.out.printf("%-5d%-5d", RK.hashList.get(i), i);
+
+            for (int j = 0; j <= i; j++)
+                System.out.printf("%-2c ", RK.pat.charAt(j));
+            System.out.println();
+        }
+    }
+
 }

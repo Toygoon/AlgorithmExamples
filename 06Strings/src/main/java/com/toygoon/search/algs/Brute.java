@@ -11,12 +11,12 @@ public class Brute {
         int i = 0, j = 0;
         for (i = 0; i <= n - m; i++) {
             for (j = 0; j < m; j++) {
-                Print.printMatchingPattern(i, j, i+j, pat);
+                Print.printMatchingPattern(i, j, i + j, pat);
                 if (txt.charAt(i + j) != pat.charAt(j))
                     break;
             }
             if (j == m) {
-                Print.printMatchingPattern(i, j, i+j, pat);
+                Print.printMatchingPattern(i, j, i + j, pat);
                 return i;
             }// found at offset i
         }

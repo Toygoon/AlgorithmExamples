@@ -4,15 +4,15 @@ import java.math.BigInteger;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class RK {
     // d is the number of characters in the input alphabet
     public final static int d = 256;
     public final static int R = d;
-    public static List<Integer> hashList = new ArrayList<>()
-            , txtHashList = new ArrayList<>();
-
+    public static List<Integer> hashList = new ArrayList<>(), txtHashList = new ArrayList<>();
+    public static String pat, txt;
     /* pat -> pattern
         txt -> text
         q -> A prime number
@@ -23,7 +23,8 @@ public class RK {
         BigInteger prime = BigInteger.probablePrime(31, new Random());
         return prime.longValue();
     }
-    public static void search(String pat, String txt, int hornerTimes, int q) {
+
+    public static boolean search(String pat, String txt, int hornerTimes, int q) {
         int M = pat.length();
         int N = txt.length();
         int i, j;
@@ -58,21 +59,14 @@ public class RK {
             txtHashList.add(t);
         }
 
-        for(Integer l : hashList)
-            System.out.println(l);
-
-        for(Integer l : txtHashList)
-            System.out.println(l);
-
-
+        /*
         // Slide the pattern over text one by one
         for (i = 0; i <= N - M; i++) {
-
             // Check the hash values of current window of text
             // and pattern. If the hash values match then only
             // check for characters on by one
             if (p == t) {
-                /* Check for characters one by one */
+                // Check for characters one by one
                 for (j = 0; j < M; j++) {
                     if (txt.charAt(i + j) != pat.charAt(j))
                         break;
@@ -94,5 +88,17 @@ public class RK {
                     t = (t + q);
             }
         }
+        */
+
+        RK.pat = pat;
+        RK.txt = txt;
+
+        for (i = 0; i < hashList.size(); i++) {
+            if (!Objects.equals(hashList.get(i), txtHashList.get(i))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
