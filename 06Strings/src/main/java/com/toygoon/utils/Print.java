@@ -26,10 +26,24 @@ public class Print {
         System.out.println();
     }
 
+    public static void printSpaceStringSkip(String txt) {
+        System.out.printf("%-5s", "i");
+        System.out.printf("%-5s", "j");
+        System.out.printf("%-10s", "skip");
+
+        for (int i = 0; i < txt.length(); i++)
+            System.out.printf("%-2d ", i);
+
+        System.out.printf("\n%-20s", "");
+        for (int i = 0; i < txt.length(); i++)
+            System.out.printf("%-2c ", txt.charAt(i));
+        System.out.println();
+    }
+
     public static void printMatchingPattern(int I, int J, int IJ, String pat) {
-        System.out.printf("%-5s", I);
-        System.out.printf("%-5s", J);
-        System.out.printf("%-10s", IJ);
+        System.out.printf("%-5d", I);
+        System.out.printf("%-5d", J);
+        System.out.printf("%-10d", IJ);
 
         for (int i = 0; i < I; i++)
             System.out.printf("%-2s ", "");
@@ -40,7 +54,7 @@ public class Print {
     }
 
     public static void printDFA(KMP kmp) {
-        System.out.printf("\n%-20s", "j");
+        System.out.printf("\n%-10s%-10s", "", "j");
         for (int i = 0; i < kmp.pat.length(); i++)
             System.out.printf("%-2d ", i);
 

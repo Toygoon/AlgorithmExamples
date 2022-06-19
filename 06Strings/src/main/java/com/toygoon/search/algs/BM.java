@@ -1,5 +1,7 @@
 package com.toygoon.search.algs;
 
+import com.toygoon.utils.Print;
+
 public class BM {
     private final int R;     // the radix
     private int[] right;     // the bad-character skip array
@@ -27,16 +29,22 @@ public class BM {
     public int search(String txt) {
         int m = pat.length();
         int n = txt.length();
-        int skip;
-        for (int i = 0; i <= n - m; i += skip) {
+        int skip = 0;
+        int i = 0, j = 0;
+
+        for (i = 0; i <= n - m; i += skip) {
             skip = 0;
-            for (int j = m - 1; j >= 0; j--) {
+            for (j = m - 1; j >= 0; j--) {
                 if (pat.charAt(j) != txt.charAt(i + j)) {
                     skip = Math.max(1, j - right[txt.charAt(i + j)]);
+                    Print.printMatchingPattern(i, j, skip, pat);
                     break;
                 }
             }
-            if (skip == 0) return i;    // found
+            if (skip == 0) {
+                Print.printMatchingPattern(i, j, skip, pat);
+                return i;
+            }    // found
         }
         return n;                       // not found
     }
