@@ -1,3 +1,6 @@
 [submodule "Huffman-Coding-In-Java"]
 	path = Huffman-Coding-In-Java
 	url = https://github.com/yugokato/Huffman-Coding-In-Java.git
+[submodule "Reference-Huffman-coding"]
+	path = Reference-Huffman-coding
+	url = https://github.com/nayuki/Reference-Huffman-coding.git
