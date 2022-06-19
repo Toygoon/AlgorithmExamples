@@ -31,7 +31,6 @@ public class SearchMain {
         System.out.println();
         txt = "3141592653589793";
         pat = "31415926535";
-        RK rk = new RK(pat);
-        System.out.println(rk.search(txt));
+        RK.search(pat, txt, 5, 997);
     }
 }
