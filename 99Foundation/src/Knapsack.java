@@ -1,54 +1,81 @@
 import java.util.*;
 
 public class Knapsack {
-    static int[][] K;
+    static int[][] B;
 
-    public class Pair<L, R> {
-        public L left;
-        public R right;
-    }
+    public static void knapsackDyProg(int W[], int V[], int M, int n) {
+        B = new int[n + 1][M + 1];
 
-    public static List<Pair<Integer, Integer>> list = new ArrayList<>();
+        for (int i = 0; i <= n; i++)
+            for (int j = 0; j <= M; j++) {
+                B[i][j] = 0;
+            }
 
-    // A utility function that returns maximum of two integers
-    static int max(int a, int b) {
-        return (a > b) ? a : b;
-    }
+        int prev = -1;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= M; j++) {
+                B[i][j] = B[i - 1][j];
+                prev = B[i][j];
 
-    // Returns the maximum value that can be put in a knapsack
-    // of capacity W
-    static int knapSack(int W, int wt[], int val[], int n) {
-        int i, w;
-        K = new int[n + 1][W + 1];
+                if ((j >= W[i - 1]) && (B[i][j] < B[i - 1][j - W[i - 1]] + V[i - 1])) {
+                    B[i][j] = B[i - 1][j - W[i - 1]] + V[i - 1];
 
-        // Build table K[][] in bottom up manner
-        for (i = 0; i <= n; i++) {
-            for (w = 0; w <= W; w++) {
-                if (i == 0 || w == 0)
-                    K[i][w] = 0;
-                else if (wt[i - 1] <= w)
-                    K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);
-                else
-                    K[i][w] = K[i - 1][w];
+                    if (prev != B[i][j]) {
+                        prev = B[i][j];
+                    }
+                }
+
             }
         }
 
-        return K[n][W];
+        System.out.println("Max Value:\t" + B[n][M]);
+
+
+        prev = -1;
+        for (int i = 0; i < B.length; i++) {
+            for (int j = 0; j < B[i].length; j++) {
+                if (B[i][j] != prev) {
+                    System.out.printf("[%d, %d (%d)] ", i, j, B[i][j]);
+                    prev = B[i][j];
+                }
+            }
+        }
+
+        System.out.println("\nSelected Packs: ");
+
+        while (n != 0) {
+            if (B[n][M] != B[n - 1][M]) {
+                System.out.println("\tPackage " + n + " with W = " + W[n - 1] + " and Value = " + V[n - 1]);
+
+                M = M - W[n - 1];
+            }
+
+            n--;
+        }
+
     }
 
-    // Driver program to test above function
-    public static void main(String args[]) {
-        int val[] = new int[]{50, 60, 40};
-        int wt[] = new int[]{5, 10, 140};
-        int W = 50;
-        int n = val.length;
-        System.out.println(knapSack(W, wt, val, n));
+    public static void main(String[] args) {
+        /*
+         * Pack and Weight - Value
+         */
+        //int W[] = new int[]{3, 4, 5, 9, 4};
+        int W[] = new int[]{5, 10, 20};
 
-        for(int i=0; i<K.length; i++) {
-            for(int j=0; j<K[i].length; j++) {
-                System.out.printf("%d ", K[i][j]);
-            }
-            System.out.println();
-        }
+        //int V[] = new int[]{3, 4, 4, 10, 4};
+        int V[] = new int[]{50, 60, 140};
+
+        /*
+         * Max Weight
+         */
+        //int M = 11;
+        int M = 90;
+        int n = V.length;
+
+        /*
+         * Run the algorithm
+         */
+        knapsackDyProg(W, V, M, n);
+
     }
 }

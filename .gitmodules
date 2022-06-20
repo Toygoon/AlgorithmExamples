@@ -7,3 +7,6 @@
 [submodule "Fractional-Knapsack"]
 	path = Fractional-Knapsack
 	url = https://github.com/amirhossein-hkh/Fractional-Knapsack.git
+[submodule "knapsack-greedy"]
+	path = knapsack-greedy
+	url = https://github.com/ashsepra/knapsack-greedy.git
