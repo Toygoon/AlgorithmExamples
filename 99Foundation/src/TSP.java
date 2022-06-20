@@ -5,8 +5,31 @@ public class TSP {
     private static int N;
     private static int visitedAll;
     private static int W[][];
+    static List<DList> list = new ArrayList<>();
 
-    public static class DList {
+    static void powerSet(int[] arr, int idx, boolean[] sel) {
+        if (idx == arr.length) {
+            DList d = new DList(idx);
+            for (int i = 0; i < sel.length; i++) {
+                if (sel[i]) {
+                    d.vertices.add(arr[i]);
+                }
+
+            }
+            if (d.vertices.size() < 1 || d.vertices.contains(0))
+                return;
+
+            list.add(d);
+            return;
+        }
+
+        sel[idx] = true;
+        powerSet(arr, idx + 1, sel);
+        sel[idx] = false;
+        powerSet(arr, idx + 1, sel);
+    }
+
+    public static class DList implements Comparable<DList> {
         public int start;
         public List<Integer> vertices;
         public int w;
@@ -14,6 +37,16 @@ public class TSP {
         public DList(int start) {
             this.start = start;
             this.vertices = new ArrayList<>();
+        }
+
+        @Override
+        public int compareTo(DList o) {
+            if (this.vertices.size() > o.vertices.size())
+                return 1;
+            else if (this.vertices.size() < o.vertices.size())
+                return -1;
+
+            return this.vertices.get(0).compareTo(o.vertices.get(0));
         }
     }
 
@@ -35,46 +68,47 @@ public class TSP {
             for (int j = 0; j < N; ++j) W[i][j] = stoi(st.nextToken());
         }
         System.out.print(TSP(START, 1));
-        calcD();
+        System.out.println();
+        //calcD();
+
+        int[] arr = {0, 1, 2, 3};
+        powerSet(arr, 0, new boolean[arr.length]);
+        Collections.sort(list);
+
+        for(DList d : list) {
+            System.out.print(d.start + " : ");
+            for(int i : d.vertices) {
+                System.out.print(i + " ");
+            }
+            System.out.println("/");
+        }
     }
 
     public static HashSet<DList> calcD() {
         HashSet<DList> result = new HashSet<>();
-
-        
-        for (int i = 1; i <= N; i++) {
-            // 가는건 1에서부터 한개씩
+        /*
+        for (int i = 1; i < N; i++) {
             DList d = new DList(i);
+            d.vertices.add(0);
+            d.w = W[i][0];
+            result.add(d);
+        }
+         */
 
-            for (int j = 1; j <= N - 1; j++) {
-                // j : 몇개짜리?
-                int count = 0;
-                for (int k = 1; k < N; k++) {
-                    if (k == i)
-                        continue;
-                    System.out.println("i : " + i + ", j : " + j + ", k + " + k);
-                }
-
-                /*
-                // 1로 가는 경로
-                DList d = new DList(i);
-                for (int k = 0; k <= N; k++) {
-                    // 공집합인 경우
-                    if (k == 0) {
-                        d.vertices.add(k);
-                        d.w = W[i][0];
-                        continue;
-                    }
-
-                    for (int l = 2; l <= k; l++) {
-
-                    }
-                }
-
-                 */
+        for (int i = 0; i < N; i++) {
+            DList d = new DList(i);
+            for (int j = 0; j < N; j++) {
+                d.vertices.add(j);
             }
+            result.add(d);
         }
 
+        for (DList d : result) {
+            for (int i : d.vertices) {
+                System.out.printf("%-2d", i);
+            }
+            System.out.println();
+        }
         return null;
     }
 
