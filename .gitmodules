@@ -4,3 +4,6 @@
 [submodule "Reference-Huffman-coding"]
 	path = Reference-Huffman-coding
 	url = https://github.com/nayuki/Reference-Huffman-coding.git
+[submodule "Fractional-Knapsack"]
+	path = Fractional-Knapsack
+	url = https://github.com/amirhossein-hkh/Fractional-Knapsack.git

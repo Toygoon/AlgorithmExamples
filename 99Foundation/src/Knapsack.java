@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Knapsack {
     static int[][] K;
+
     public class Pair<L, R> {
         public L left;
         public R right;
@@ -9,10 +10,13 @@ public class Knapsack {
 
     public static List<Pair<Integer, Integer>> list = new ArrayList<>();
 
+    // A utility function that returns maximum of two integers
     static int max(int a, int b) {
         return (a > b) ? a : b;
     }
 
+    // Returns the maximum value that can be put in a knapsack
+    // of capacity W
     static int knapSack(int W, int wt[], int val[], int n) {
         int i, w;
         K = new int[n + 1][W + 1];
@@ -20,41 +24,31 @@ public class Knapsack {
         // Build table K[][] in bottom up manner
         for (i = 0; i <= n; i++) {
             for (w = 0; w <= W; w++) {
-                if (i == 0 || w == 0) {
+                if (i == 0 || w == 0)
                     K[i][w] = 0;
-                }
-                else if (wt[i - 1] <= w) {
+                else if (wt[i - 1] <= w)
                     K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);
-                }
-                else {
+                else
                     K[i][w] = K[i - 1][w];
-                }
             }
         }
 
         return K[n][W];
     }
 
+    // Driver program to test above function
     public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        //System.out.println("Enter the number of items: ");
-        //int n = sc.nextInt();
-        int n = 5;
-
-        System.out.println("Enter the items weights: ");
-        int[] wt = new int[n];
-        String[] tmp = "01 56 42 78 12".split(" ");
-        for (int i = 0; i < n; i++)
-            wt[i] = Integer.parseInt(tmp[i]);
-
-        tmp = "50 30 20 10 50 ".split(" ");
-        int[] val = new int[n];
-        for (int i = 0; i < n; i++)
-            val[i] = Integer.parseInt(tmp[i]);
-
+        int val[] = new int[]{50, 60, 40};
+        int wt[] = new int[]{5, 10, 140};
         int W = 50;
+        int n = val.length;
+        System.out.println(knapSack(W, wt, val, n));
 
-        System.out.println("The maximum value that can be put in a knapsack of capacity W is: " + knapSack(W, wt, val, n));
-        sc.close();
+        for(int i=0; i<K.length; i++) {
+            for(int j=0; j<K[i].length; j++) {
+                System.out.printf("%d ", K[i][j]);
+            }
+            System.out.println();
+        }
     }
 }
